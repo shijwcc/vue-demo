@@ -1,17 +1,20 @@
 <template>
   <div class="hello">
     <h1>{{ aDouble }}</h1>
+    <h1>{{ tableData }}asdasdasd</h1>
     <h1>{{ msg | filterA}}</h1>
     <h1>{{ asd | filterA}}</h1>
     <test-a @fatherSay="sayHi"></test-a>
     <button @click="test1">接口测试--直接调用</button>
     <button @click="test2">接口测试--公共调用</button>
+    <button @click="test3">接口测试--删除示例</button>
+    <button @click="test4">路由跳转</button>
   </div>
 </template>
 
 <script>
 import testA from './testA'
-import { getTableData } from '../api/tableData'/* 3.13   12：36 */
+import { getTableData, delTableData } from '../api/tableData'
 
 export default {
   name: 'HelloWorld',
@@ -21,6 +24,7 @@ export default {
   data () {
     return {
       msg: 'Welcome ',
+      tableData: [],
       asd: 'dididi ',
       a: '',
       b: {
@@ -73,24 +77,22 @@ export default {
     /* 在watcher函数中 不能使用箭头函数 因为箭头函数的this绑定父级作用域的上下文 所以不会按照期望指向 Vue实例 */
   },
   methods: {
-    test () {
-      this.$api.post('login/yyy', null, r => {
-        console.log(r, 'this is test')
-      })
+    /* api */
+    test3 () {
+      delTableData('/test3', {id: 'idididid'}).then(res => { this.$message('删除成功') })/* 使用后台返回信息 */
     },
     test2 () {
-      getTableData('/test/test1', r => {
-        console.log(r, 'this is test')
-      })
+      getTableData('/test2').then(res => { this.tableData = res.data })
     },
     test1 () {
-      this.$api.post('/test/test1', null, r => {
-        console.log(r)
-        this.msg = r
-      })
+      this.$api.post('/test1').then(res => { this.msg = res.data })
+    },
+    /* doing */
+    test4 () {
+      this.$router.push('testA')
     },
     sayHi (val) {
-      console.log('Hi!' + val)
+      this.$message('Hi!' + val)
     }
   },
   beforeCreate () {
@@ -100,6 +102,7 @@ export default {
   created () {
     /* do sth created */
     /* 实例创建后：这个阶段已经完成了数据观测(data observer)，属性和方法的运算， watch/event 事件回调。mount挂载阶段还没开始，$el 属性目前不可见，数据并没有在DOM元素上进行渲染，可以获取data属性。 */
+    /* 使用bus 跟 debounce某个连续时间内只执行一次 throttle固定时间执行一次 */
   },
   beforeMount () {
     /* do sth beforeMount */
@@ -108,7 +111,7 @@ export default {
   mounted () {
     /* do sth mounted */
     /* el选项的DOM节点 被新创建的 vm.$el 替换，并挂载到实例上去之后调用此生命周期函数。此时实例的数据在DOM节点上进行渲染，通常在这里发起第一次的后端请求。 */
-    // this.test1()
+    /* 接口请求一般都在mounted */
   },
   beforeUpdate () {
     /* do sth beforeUpdate */
@@ -129,6 +132,7 @@ export default {
   },
   destroyed () {
     /* do sth destroyed */
+    /* eg：定时器 */
   },
   errorCaptured () {
     /* do sth errorCaptured 错误捕获 */
