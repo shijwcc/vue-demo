@@ -4,12 +4,15 @@
     <h1>{{ msg | filterA}}</h1>
     <h1>{{ asd | filterA}}</h1>
     <test-a @fatherSay="sayHi"></test-a>
-    <button @click="test1">接口测试</button>
+    <button @click="test1">接口测试--直接调用</button>
+    <button @click="test2">接口测试--公共调用</button>
   </div>
 </template>
 
 <script>
 import testA from './testA'
+import { getTableData } from '../api/tableData'/* 3.13   12：36 */
+
 export default {
   name: 'HelloWorld',
   components: {
@@ -72,6 +75,11 @@ export default {
   methods: {
     test () {
       this.$api.post('login/yyy', null, r => {
+        console.log(r, 'this is test')
+      })
+    },
+    test2 () {
+      getTableData('/test/test1', r => {
         console.log(r, 'this is test')
       })
     },

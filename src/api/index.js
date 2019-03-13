@@ -1,4 +1,4 @@
-// 配置API接口地址
+// 配置API接口地址（代理地址----真实地址）
 const root = process.env.NODE_ENV === 'development' ? '/jiawen' : 'http://192.168.0.155:8888'
 // 引用axios
 const axios = require('axios')
@@ -67,6 +67,14 @@ function apiAxios (method, url, params, success, failure) {
         console.log(res, 'faild')
       }
     })
+  //   .then(res = > {
+  //     resolve( res.data );
+  // })
+  // .catch( err => {
+  //   if ( err ) {
+  //     reject( err.data );
+  //   }
+  // })
 }
 
 // 返回在vue模板中的调用接口
