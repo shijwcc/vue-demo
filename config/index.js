@@ -1,6 +1,7 @@
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
+const proxy = require('./proxyConfig')
 
 const path = require('path')
 
@@ -10,22 +11,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api1': {
-        target: 'http://192.168.0.77:8012/',
-        secure: false,/* 如果是https接口，需要配置这个参数 */
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api1': '/new'
-        }
-      },
-      '/jiawen': {
-        target: 'http://192.168.0.155:8888',
-        pathRewrite: {
-          '^/jiawen': '/'
-        }
-      }
-    },
+    proxyTable: proxy,
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
