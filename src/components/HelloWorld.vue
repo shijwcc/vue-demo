@@ -9,6 +9,7 @@
     <button @click="test2">接口测试--公共调用</button>
     <button @click="test3">接口测试--删除示例</button>
     <button @click="test4">路由跳转</button>
+    <button @click="test5">mutations测试</button>
   </div>
 </template>
 
@@ -90,6 +91,18 @@ export default {
     /* doing */
     test4 () {
       this.$router.push('testA')
+    },
+    test5 () {
+      this.$store.commit('add')
+      // this.$store.commit('add', 10)
+      // this.$store.commit('add', {
+      //   count: 10
+      // })
+      // this.$store.commit({
+      //   type: 'add',
+      //   count: 10
+      // })
+      console.log(this.$store.state.count, 'this is count')
     },
     sayHi (val) {
       this.$message('Hi!' + val)

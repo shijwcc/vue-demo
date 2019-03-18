@@ -11,7 +11,8 @@ Vue.use(Vuex)
 
 const state = {
   baseUrl: 'http://192.168.0.155:8888',
-  proxyUrl: '/jiawen'
+  proxyUrl: '/jiawen',
+  count: 0
 }
 
 export default new Vuex.Store({
