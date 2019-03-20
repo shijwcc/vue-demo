@@ -7,7 +7,7 @@ export default {
 }
 
 // export default {
-//   add (state, payload) {
+//   add (state, payload) {//载荷
 //     state.count += payload
 //   }
 // }

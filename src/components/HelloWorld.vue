@@ -4,12 +4,14 @@
     <h1>{{ tableData }}asdasdasd</h1>
     <h1>{{ msg | filterA}}</h1>
     <h1>{{ asd | filterA}}</h1>
+    <h1>{{ time }}</h1>
     <test-a @fatherSay="sayHi"></test-a>
     <button @click="test1">接口测试--直接调用</button>
     <button @click="test2">接口测试--公共调用</button>
     <button @click="test3">接口测试--删除示例</button>
     <button @click="test4">路由跳转</button>
     <button @click="test5">mutations测试</button>
+    <button @click="test6">全局方法utils测试</button>
   </div>
 </template>
 
@@ -31,7 +33,8 @@ export default {
       b: {
         a: ''
       },
-      c: ''
+      c: '',
+      time: '2000-1-1'
     }
   },
   // props: ['father'],
@@ -68,7 +71,7 @@ export default {
     msg: function (val, oldVal) { /* do sth */ },
     a: {
       handler: function (val, oldVal) { /* do sth */ },
-      immediate: true/* handler回调函数会在watch开始之后立即被调用 */
+      immediate: true/* handler回调函数会在watch开始之后立即被调用 eg：初始化的参数请求数据被赋值 */
     },
     b: {
       handler: function (val, oldVal) { /* do sth */ },
@@ -78,6 +81,7 @@ export default {
     /* 在watcher函数中 不能使用箭头函数 因为箭头函数的this绑定父级作用域的上下文 所以不会按照期望指向 Vue实例 */
   },
   methods: {
+    /* 做分类 接口类 方法类 组件方法类 */
     /* api */
     test3 () {
       delTableData('/test3', {id: 'idididid'}).then(res => { this.$message('删除成功') })/* 使用后台返回信息 */
@@ -89,6 +93,9 @@ export default {
       this.$api.post('/test1').then(res => { this.msg = res.data })
     },
     /* doing */
+    test6 () {
+      this.time = this.$utils.formatTime(this.time)
+    },
     test4 () {
       this.$router.push('testA')
     },

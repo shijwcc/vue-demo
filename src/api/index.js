@@ -1,7 +1,9 @@
-import store from '../store'
+// import store from '../store'
 
 // 配置API接口地址（代理地址----真实地址）
-const root = process.env.NODE_ENV === 'development' ? store.state.proxyUrl : store.state.baseUrl
+const root = '/jiawen'
+// const root = process.env.NODE_ENV === 'development' ? '/jiawen' : 'http://192.168.0.155:8888'
+// const root = process.env.NODE_ENV === 'development' ? store.state.proxyUrl : store.state.baseUrl
 // 引用axios
 const axios = require('axios')
 
