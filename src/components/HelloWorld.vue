@@ -20,7 +20,7 @@ import testA from './testA'
 import { getTableData, delTableData } from '../api/tableData'
 
 export default {
-  name: 'HelloWorld',
+  name: 'HelloWorld',/* 再次进入缓存页面不触发mounted方法 */
   components: {
     'test-a': testA
   },
@@ -51,7 +51,8 @@ export default {
   //     type: Number,
   //     default: 0,
   //     required: true,
-  //     validator: function (value) {
+  //
+  // : function (value) {
   //       /* 自定义验证规则 */
   //       return value >= 0
   //     }
