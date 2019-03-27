@@ -5,7 +5,8 @@
     <h1>{{ msg | filterA}}</h1>
     <h1>{{ asd | filterA}}</h1>
     <h1>{{ time }}</h1>
-    <test-a @fatherSay="sayHi"></test-a>
+    <test-a @fatherSay="sayHi">111111</test-a>
+    <div>接口测试按钮组</div>
     <button @click="test1">接口测试--直接调用</button>
     <button @click="test2">接口测试--公共调用</button>
     <button @click="test3">接口测试--删除示例</button>
@@ -20,7 +21,7 @@ import testA from './testA'
 import { getTableData, delTableData } from '../api/tableData'
 
 export default {
-  name: 'HelloWorld',/* 再次进入缓存页面不触发mounted方法 */
+  name: 'HelloWorld', /* 再次进入缓存页面不触发mounted方法 */
   components: {
     'test-a': testA
   },

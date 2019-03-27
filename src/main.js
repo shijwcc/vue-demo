@@ -19,6 +19,11 @@ Vue.config.productionTip = false
 Vue.prototype.$api = api
 Vue.prototype.$utils = utils
 
+/* 导航守卫--全局前置守卫 */
+router.beforeEach((to, from, next) => {
+  next()
+})
+
 Vue.use(ElementUI)
 
 /* eslint-disable no-new */
