@@ -1,18 +1,30 @@
 <template>
   <div class="hello">
     <h1>{{ aDouble }}</h1>
-    <h1>{{ tableData }}asdasdasd</h1>
     <h1>{{ msg | filterA}}</h1>
     <h1>{{ asd | filterA}}</h1>
     <h1>{{ time }}</h1>
     <test-a @fatherSay="sayHi">111111</test-a>
     <div>接口测试按钮组</div>
     <button @click="test1">接口测试--直接调用</button>
-    <button @click="test2">接口测试--公共调用</button>
-    <button @click="test3">接口测试--删除示例</button>
+    <button @click="getTableData">接口测试--公共调用(获取表格数据)</button>
+    <button @click="delTableData">接口测试--删除示例</button>
     <button @click="test4">路由跳转</button>
     <button @click="test5">mutations测试</button>
     <button @click="test6">全局方法utils测试</button>
+    <el-table
+      :data="tableData"
+      style="width: 50%;margin: auto">
+      <el-table-column
+        prop="name"
+        label="姓名"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="address"
+        label="地址">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -85,11 +97,11 @@ export default {
   methods: {
     /* 做分类 接口类 方法类 组件方法类 */
     /* api */
-    test3 () {
-      delTableData('/test3', {id: 'idididid'}).then(res => { this.$message('删除成功') })/* 使用后台返回信息 */
+    delTableData () {
+      delTableData('/delTableData', {id: 'idididid'}).then(res => { this.$message('删除成功') })/* 使用后台返回信息 */
     },
-    test2 () {
-      getTableData('/test2').then(res => { this.tableData = res.data })
+    getTableData () {
+      getTableData('/getTableData').then(res => { this.tableData = res.data })
     },
     test1 () {
       this.$api.post('/test1').then(res => { this.msg = res.data })
