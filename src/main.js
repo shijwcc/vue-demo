@@ -23,6 +23,14 @@ Vue.prototype.$utils = utils
 router.beforeEach((to, from, next) => {
   next()
 })
+/* 导航守卫--全局解析守卫 */
+// router.beforeResolve((to, from, next) => {
+//   next()
+// })
+/* 导航守卫--全局后置钩子 */
+// router.afterEach((to, from, next) => {
+//   next()
+// })
 
 Vue.use(ElementUI)
 
