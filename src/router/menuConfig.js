@@ -22,6 +22,11 @@ const asideMenuConfig = [
     icon: 'el-icon-menu'
   },
   {
+    path: '/Draggable',
+    name: '自定义表单',
+    icon: 'el-icon-menu'
+  },
+  {
     path: '/Search',
     name: '侧边导航1',
     icon: 'el-icon-menu'

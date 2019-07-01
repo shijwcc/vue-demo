@@ -10,7 +10,7 @@ module.exports = {
   '/jiawen': {
     target: 'http://192.168.0.155:8888',
     pathRewrite: {
-      '^/jiawen': '/'
+      '^/jiawen': ''
     }
   }
 }

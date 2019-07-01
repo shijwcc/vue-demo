@@ -1,5 +1,6 @@
 import HelloWorld from '@/components/HelloWorld'
 import testA from '@/components/testA'
+import Draggable from '@/components/Draggable'
 
 // const testA = () => import(/* webpackChunkName: 'ImportFuncDemo' */ '@/components/testA')
 
@@ -25,6 +26,11 @@ const routerConfig = [
     path: '/',
     name: 'HelloWorld',
     component: HelloWorld
+  },
+  {
+    path: '/Draggable',
+    name: 'Draggable',
+    component: Draggable
   },
   {
     path: '/testA',
