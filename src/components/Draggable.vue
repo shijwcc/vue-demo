@@ -47,7 +47,8 @@
                      style="height: 80vh">
             <div v-for="(element, index) in list1" :key="index" class="list-complete-item" :class="{undraggable : element.flag}">
               <div class="list-complete-item-handle">
-                <label>{{element['name'+index] !== undefined ? element['name'+index] : element.flagName == 1 ? '输入框' : '选择框'}}</label>
+                <label>{{element.name}}</label>
+                <!--<label>{{element['name'+index] !== undefined ? element['name'+index] : element.flagName == 1 ? '输入框' : '选择框'}}</label>-->
                 <el-input v-if="element.flagName == 1" v-model="element['charName1'+index]" @change="changeChar(index, element.charName1)" placeholder="请输入内容"></el-input>
                 <el-select v-if="element.flagName == 2" v-model="element['charName1'+index]" placeholder="请选择活动区域">
                   <el-option label="区域一" value="shanghai"></el-option>
@@ -142,7 +143,7 @@ export default {
       this.$set(q, 'flag', false)
     },
     edit (index) {
-      this.list1[index]['name' + index] = '测试选择'
+      this.list1[index]['name'] = '测试选择'
       this.$forceUpdate()
     }
   }
